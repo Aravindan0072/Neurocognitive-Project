@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurocognitive Risk Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4cc9f0;
+            --secondary: #3f37c9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --danger: #ef233c;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transform: translateY(0);
+            transition: var(--transition);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .container:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            animation: shine 8s infinite linear;
+        }
+
+        .header h1 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-weight: 300;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .header i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: #f8f9fa;
+            appearance: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+            background-color: white;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234361ee' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 8px;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-text i {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+
+        .range-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .tooltip {
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .tooltip-content {
+            display: none;
+            position: absolute;
+            background: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 250px;
+            z-index: 100;
+            right: 0;
+            top: 100%;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 300;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .tooltip:hover .tooltip-content {
+            display: block;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-10%, -10%); }
+            100% { transform: rotate(30deg) translate(10%, 10%); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+
+        input, select {
+            border-color: #e9ecef !important;
+        }
+        
+        /* New validation classes */
+        .is-valid {
+            border-color: #28a745 !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+        
+        .is-invalid {
+            border-color: var(--danger) !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ef233c' viewBox='0 0 16 16'%3E%3Cpath d='M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+        
+        .invalid-feedback {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* --- BUG FIX START --- */
+        /* Only show error if the specific input/select is actually invalid */
+        .was-validated input:invalid ~ .invalid-feedback,
+        .was-validated select:invalid ~ .invalid-feedback,
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        /* --- BUG FIX END --- */
+        
+        /* Adjust select background to not overlap with validation icon */
+        select {
+            background-position: right 40px center;
+        }
+        
+        /* Tooltip adjustments */
+        .tooltip {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        /* Result display styles */
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        .result-high {
+            background-color: #ffebee;
+            border-left: 5px solid var(--danger);
+        }
+
+        .result-low {
+            background-color: #e8f5e9;
+            border-left: 5px solid var(--success);
+        }
+
+        .result-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .result-detail {
+            margin-bottom: 5px;
+        }
+
+        .result-accuracy {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 10px;
+        }
+        
+        /* BMI calculation display */
+        .bmi-display {
+            background-color: #f0f8ff;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .bmi-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .bmi-category {
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .underweight {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .normal {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .overweight {
+            background-color: #ffeeba;
+            color: #856404;
+        }
+        
+        .obese {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .row .form-group {
+            flex: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fas fa-brain"></i>
+            <h1>Neurocognitive Risk Assessment</h1>
+            <p>Evaluate your risk for cognitive impairment with our advanced screening tool</p>
+        </div>
+
+        <div class="form-container">
+            <form id="assessmentForm" novalidate>
+                <div class="form-group">
+                    <label for="Age" class="required">Age (years)</label>
+                    <input type="number" id="Age" name="Age" min="40" max="120" required>
+                    <div class="range-indicator">
+                        <span>40</span>
+                        <span>120</span>
+                    </div>
+                    <div class="invalid-feedback">Please enter a valid age between 40 and 120</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Gender" class="required">Gender</label>
+                    <select id="Gender" name="Gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your gender</div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="Height" class="required">Height (cm)</label>
+                        <input type="number" id="Height" name="Height" min="100" max="250" step="0.1" required>
+                        <div class="invalid-feedback">Please enter a valid height between 100 and 250 cm</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Weight" class="required">Weight (kg)</label>
+                        <input type="number" id="Weight" name="Weight" min="30" max="300" step="0.1" required>
+                        <div class="invalid-feedback">Please enter a valid weight between 30 and 300 kg</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div id="bmiResult" class="bmi-display" style="display: none;">
+                        <div>
+                            <span>Your BMI: </span>
+                            <span id="bmiValue" class="bmi-value">0</span>
+                        </div>
+                        <div>
+                            <span id="bmiCategory" class="bmi-category">Category</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="BMI" name="BMI">
+                </div>
+
+                <div class="form-group">
+                    <label for="MMSE" class="required">Mini-Mental State Examination (MMSE) Score</label>
+                    <input type="number" id="MMSE" name="MMSE" min="0" max="30" required>
+                    <div class="range-indicator">
+                        <span>0 (Low)</span>
+                        <span>30 (High)</span>
+                    </div>
+                    <p class="info-text">
+                        <i class="fas fa-info-circle"></i>
+                        Standard screening test for cognitive impairment (Higher scores indicate better cognitive function)
+                    </p>
+                    <div class="invalid-feedback">Please enter a valid MMSE score between 0 and 30</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="MemoryComplaints" class="required">Memory Complaints</label>
+                    <select id="MemoryComplaints" name="MemoryComplaints" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="0">No memory complaints</option>
+                        <option value="1">Experiencing memory complaints</option>
+                    </select>
+                    <div class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <div class="tooltip-content">
+                            Includes forgetfulness, difficulty remembering names or recent events
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">Please select an option</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="BehavioralProblems" class="required">Behavioral Problems</label>
+                    <select id="BehavioralProblems" name="BehavioralProblems" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="0">No behavioral problems</option>
+                        <option value="1">Experiencing behavioral problems</option>
+                    </select>
+                    <div class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <div class="tooltip-content">
+                            Includes mood swings, aggression, or personality changes
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">Please select an option</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="FamilyHistory" class="required">Family History of Alzheimer's</label>
+                    <select id="FamilyHistory" name="FamilyHistory" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="0">No family history</option>
+                        <option value="1">Family history present</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nWBV" class="required">Normalized Whole Brain Volume (nWBV)</label>
+                    <input type="number" id="nWBV" name="nWBV" step="0.0001" min="0.5" max="1.0" required>
+                    <div class="range-indicator">
+                        <span>0.5 (Low)</span>
+                        <span>1.0 (High)</span>
+                    </div>
+                    <p class="info-text">
+                        <i class="fas fa-info-circle"></i>
+                        Normalized whole brain volume as a fraction of intracranial volume
+                    </p>
+                    <div class="invalid-feedback">Please enter a valid nWBV between 0.5 and 1.0</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="CDR" class="required">Clinical Dementia Rating (CDR)</label>
+                    <input type="number" id="CDR" name="CDR" step="0.5" min="0" max="3" required>
+                    <div class="range-indicator">
+                        <span>0 (None)</span>
+                        <span>3 (Severe)</span>
+                    </div>
+                    <div class="invalid-feedback">Please enter a valid CDR score between 0 and 3</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eTIV" class="required">Estimated Total Intracranial Volume (eTIV)</label>
+                    <input type="number" id="eTIV" name="eTIV" min="1000" max="2000" required>
+                    <div class="range-indicator">
+                        <span>1000</span>
+                        <span>2000</span>
+                    </div>
+                    <p class="info-text">
+                        <i class="fas fa-info-circle"></i>
+                        Measured in cm³
+                    </p>
+                    <div class="invalid-feedback">Please enter a valid eTIV between 1000 and 2000</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ASF" class="required">Atlas Scaling Factor (ASF)</label>
+                    <input type="number" id="ASF" name="ASF" step="0.01" min="0.8" max="1.2" required>
+                    <div class="range-indicator">
+                        <span>0.8</span>
+                        <span>1.2</span>
+                    </div>
+                    <div class="invalid-feedback">Please enter a valid ASF between 0.8 and 1.2</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="EDUC" class="required">Years of Education</label>
+                    <input type="number" id="EDUC" name="EDUC" min="0" max="30" required>
+                    <div class="range-indicator">
+                        <span>0</span>
+                        <span>30</span>
+                    </div>
+                    <div class="invalid-feedback">Please enter valid years of education between 0 and 30</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="SES" class="required">Socioeconomic Status (SES)</label>
+                    <select id="SES" name="SES" required>
+                        <option value="" disabled selected>Select SES</option>
+                        <option value="1">1 (High)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Low)</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your socioeconomic status</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="SleepQuality" class="required">Sleep Quality</label>
+                    <input type="number" id="SleepQuality" name="SleepQuality" min="1" max="10" required>
+                    <div class="range-indicator">
+                        <span>1 (Poor)</span>
+                        <span>10 (Excellent)</span>
+                    </div>
+                    <div class="invalid-feedback">Please rate your sleep quality between 1 and 10</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="FunctionalAssessment" class="required">Functional Assessment Score</label>
+                    <input type="number" id="FunctionalAssessment" name="FunctionalAssessment" min="1" max="10" required>
+                    <div class="range-indicator">
+                        <span>1 (Low function)</span>
+                        <span>10 (High function)</span>
+                    </div>
+                    <p class="info-text">
+                        <i class="fas fa-info-circle"></i>
+                        Ability to perform daily activities independently
+                    </p>
+                    <div class="invalid-feedback">Please enter a functional assessment score between 1 and 10</div>
+                </div>
+                
+                <button type="submit" class="btn animate__animated animate__pulse animate__infinite animate__slower">
+                    <i class="fas fa-chart-line" style="margin-right: 8px;"></i>
+                    Assess My Risk
+                </button>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('assessmentForm');
+            const resultDiv = document.getElementById('result');
+            const heightInput = document.getElementById('Height');
+            const weightInput = document.getElementById('Weight');
+            const bmiInput = document.getElementById('BMI');
+            const bmiResult = document.getElementById('bmiResult');
+            const bmiValue = document.getElementById('bmiValue');
+            const bmiCategory = document.getElementById('bmiCategory');
+            
+            // Function to calculate BMI
+            function calculateBMI() {
+                const height = parseFloat(heightInput.value) / 100; // Convert cm to m
+                const weight = parseFloat(weightInput.value);
+                
+                if (height > 0 && weight > 0) {
+                    const bmi = weight / (height * height);
+                    bmiInput.value = bmi.toFixed(1);
+                    bmiValue.textContent = bmi.toFixed(1);
+                    
+                    // Determine BMI category
+                    let category = '';
+                    let categoryClass = '';
+                    if (bmi < 18.5) {
+                        category = 'Underweight';
+                        categoryClass = 'underweight';
+                    } else if (bmi >= 18.5 && bmi < 25) {
+                        category = 'Normal';
+                        categoryClass = 'normal';
+                    } else if (bmi >= 25 && bmi < 30) {
+                        category = 'Overweight';
+                        categoryClass = 'overweight';
+                    } else {
+                        category = 'Obese';
+                        categoryClass = 'obese';
+                    }
+                    
+                    bmiCategory.textContent = category;
+                    bmiCategory.className = 'bmi-category ' + categoryClass;
+                    bmiResult.style.display = 'flex';
+                } else {
+                    bmiResult.style.display = 'none';
+                }
+            }
+            
+            // Calculate BMI when height or weight changes
+            heightInput.addEventListener('input', calculateBMI);
+            weightInput.addEventListener('input', calculateBMI);
+            
+            // Enhanced validation
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Calculate BMI one last time before submission
+                calculateBMI();
+                
+                if (!this.checkValidity()) {
+                    e.stopPropagation();
+                    
+                    // Add was-validated class to show validation messages
+                    this.classList.add('was-validated');
+                    
+                    // Add shake animation to invalid fields
+                    const invalidFields = this.querySelectorAll(':invalid');
+                    invalidFields.forEach(field => {
+                        field.classList.add('is-invalid');
+                        field.classList.add('animate__animated', 'animate__shakeX');
+                        setTimeout(() => {
+                            field.classList.remove('animate__animated', 'animate__shakeX');
+                        }, 1000);
+                    });
+                    
+                    return;
+                }
+                
+                // If form is valid, collect data and send to server
+                const formData = new FormData(this);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+                
+                // Show loading state
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<p>Processing your assessment...</p>';
+                
+                // Send to server
+                fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => { throw err; });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Display results
+                    const isHighRisk = data.prediction.includes('High');
+                    resultDiv.className = isHighRisk ? 'result-high' : 'result-low';
+                    resultDiv.innerHTML = `
+                        <div class="result-title">${data.prediction}</div>
+                        <div class="result-detail"><strong>Probability:</strong> ${data.probability}</div>
+                        <div class="result-detail"><strong>Confidence:</strong> ${data.confidence}</div>
+                        <div class="result-accuracy">Model accuracy: ${data.model_accuracy}</div>
+                    `;
+                    
+                    // Scroll to result
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultDiv.className = 'result-high';
+                    
+                    if (error.error) {
+                        if (error.missing_fields) {
+                            resultDiv.innerHTML = `
+                                <div class="result-title">Error</div>
+                                <div class="result-detail">Please fill in all required fields.</div>
+                                <div class="result-detail">Missing: ${error.missing_fields.join(', ')}</div>
+                            `;
+                        } else {
+                            resultDiv.innerHTML = `
+                                <div class="result-title">Error</div>
+                                <div class="result-detail">${error.error}</div>
+                                ${error.details ? `<div class="result-detail">Details: ${error.details}</div>` : ''}
+                            `;
+                        }
+                    } else {
+                        resultDiv.innerHTML = `
+                            <div class="result-title">Error</div>
+                            <div class="result-detail">An unexpected error occurred. Please try again.</div>
+                        `;
+                    }
+                });
+            });
+            
+            // Real-time validation on blur
+            const inputs = form.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (form.classList.contains('was-validated')) {
+                        this.classList.remove('is-valid', 'is-invalid');
+                        if (this.checkValidity()) {
+                            this.classList.add('is-valid');
+                        } else {
+                            this.classList.add('is-invalid');
+                        }
+                    }
+                });
+                
+                // Clear validation when user starts typing
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('is-invalid')) {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+            // Tooltip functionality
+            const tooltips = document.querySelectorAll('.tooltip');
+            tooltips.forEach(tooltip => {
+                tooltip.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const content = this.querySelector('.tooltip-content');
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+            
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.tooltip-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

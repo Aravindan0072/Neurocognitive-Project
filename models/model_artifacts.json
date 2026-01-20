@@ -1,0 +1,69 @@
+{
+    "metrics": {
+        "accuracy": 1.0,
+        "auc": 1.0,
+        "classification_report": {
+            "0": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 47.0
+            },
+            "1": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 353.0
+            },
+            "accuracy": 1.0,
+            "macro avg": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 400.0
+            },
+            "weighted avg": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 400.0
+            }
+        },
+        "confusion_matrix": [
+            [
+                47,
+                0
+            ],
+            [
+                0,
+                353
+            ]
+        ],
+        "feature_importance": {
+            "Age": 0.04391497926696055,
+            "MMSE": 0.2743573266200637,
+            "Gender": 0.03154135281456782,
+            "EDUC": 0.04844289506071795,
+            "SES": 0.32027463636969583,
+            "CDR": 0.03629363947133092,
+            "eTIV": 0.07418124442441723,
+            "nWBV": 0.0643852676178183,
+            "ASF": 0.05141214072732089
+        }
+    },
+    "features_used": [
+        "Age",
+        "MMSE",
+        "Gender",
+        "EDUC",
+        "SES",
+        "CDR",
+        "eTIV",
+        "nWBV",
+        "ASF"
+    ],
+    "gender_mapping": {
+        "M": 1,
+        "F": 0
+    }
+}

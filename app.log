@@ -1,0 +1,16 @@
+2025-04-17 15:41:50,314 - __main__ - INFO - Models loaded successfully
+2025-04-17 15:41:50,316 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 15:41:54,698 - __main__ - INFO - Models loaded successfully
+2025-04-17 15:41:54,698 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 15:42:59,581 - __main__ - INFO - Received form data: {'Age': '60', 'Gender': 'male', 'Height': '164', 'Weight': '60', 'BMI': '22.3', 'MMSE': '29', 'MemoryComplaints': '0', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.9', 'CDR': '0', 'eTIV': '1000', 'ASF': '0.8', 'EDUC': '28', 'SES': '3', 'SleepQuality': '9', 'FunctionalAssessment': '8'}
+2025-04-17 15:42:59,632 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '12.1%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'Excellent results! Keep up the healthy habits!'}
+2025-04-17 15:44:21,084 - __main__ - INFO - Received form data: {'Age': '80', 'Gender': 'male', 'Height': '180', 'Weight': '65', 'BMI': '20.1', 'MMSE': '13', 'MemoryComplaints': '1', 'BehavioralProblems': '1', 'FamilyHistory': '0', 'nWBV': '1.0', 'CDR': '2', 'eTIV': '1500', 'ASF': '0.9', 'EDUC': '15', 'SES': '3', 'SleepQuality': '5', 'FunctionalAssessment': '4'}
+2025-04-17 15:44:21,163 - __main__ - INFO - Prediction successful: {'prediction': 'High Risk', 'probability': '100.0%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': "Early detection is key - you're doing the right thing!"}
+2025-12-30 15:50:20,806 - __main__ - INFO - Models loaded successfully
+2025-12-30 15:50:20,809 - __main__ - INFO - Model accuracy: 1.0000
+2025-12-30 15:50:23,128 - __main__ - INFO - Models loaded successfully
+2025-12-30 15:50:23,128 - __main__ - INFO - Model accuracy: 1.0000
+2025-12-30 16:01:51,135 - __main__ - INFO - Received form data: {'Age': '57', 'Gender': 'female', 'Height': '165', 'Weight': '55', 'BMI': '20.2', 'MMSE': '18', 'MemoryComplaints': '0', 'BehavioralProblems': '0', 'FamilyHistory': '1', 'nWBV': '1', 'CDR': '2', 'eTIV': '1500', 'ASF': '1', 'EDUC': '20', 'SES': '4', 'SleepQuality': '5', 'FunctionalAssessment': '4'}
+2025-12-30 16:01:51,356 - __main__ - INFO - Prediction successful: {'prediction': 'High Risk', 'probability': '100.0%', 'confidence': 'high', 'model_accuracy': '100.0%', 'compliment': 'This assessment shows your proactive approach to health!'}
+2025-12-30 16:04:56,805 - __main__ - INFO - Received form data: {'Age': '65', 'Gender': 'female', 'Height': '165', 'Weight': '65', 'BMI': '23.9', 'MMSE': '29', 'MemoryComplaints': '0', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.7', 'CDR': '0', 'eTIV': '1450', 'ASF': '1.1', 'EDUC': '16', 'SES': '2', 'SleepQuality': '9', 'FunctionalAssessment': '10'}
+2025-12-30 16:04:56,880 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '0.0%', 'confidence': 'high', 'model_accuracy': '100.0%', 'compliment': 'Wonderful! Your results indicate good cognitive function!'}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Previous styles remain the same */
+        /* ... */
+
+        .compliment {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .result-high .compliment {
+            border-left: 4px solid var(--danger);
+        }
+
+        .result-low .compliment {
+            border-left: 4px solid var(--success);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container" id="resultContainer">
+        <div class="result-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h1 class="result-title">Assessment Results</h1>
+        
+        <div class="compliment" id="compliment"></div>
+        
+        <div class="result-probability" id="probability"></div>
+        <div class="result-confidence" id="confidence"></div>
+        <div class="result-accuracy" id="accuracy"></div>
+        
+        <div class="result-details" id="details">
+            <!-- Details will be populated by JavaScript -->
+        </div>
+        
+        <a href="/" class="btn">
+            <i class="fas fa-redo" style="margin-right: 8px;"></i>
+            Perform Another Assessment
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const result = {
+                prediction: urlParams.get('prediction') || 'No prediction data',
+                probability: urlParams.get('probability') || '0%',
+                confidence: urlParams.get('confidence') || 'low',
+                model_accuracy: urlParams.get('model_accuracy') || '0%',
+                compliment: urlParams.get('compliment') || 'Thank you for completing the assessment!'
+            };
+
+            // Set the appropriate class based on risk level
+            const container = document.getElementById('resultContainer');
+            const isHighRisk = result.prediction.includes('High');
+            container.classList.add(isHighRisk ? 'result-high' : 'result-low');
+
+            // Update the icon based on risk level
+            const icon = document.querySelector('.result-icon i');
+            icon.className = isHighRisk ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle';
+
+            // Display the results
+            document.getElementById('compliment').textContent = result.compliment;
+            document.getElementById('probability').textContent = `Risk Probability: ${result.probability}`;
+            
+            const confidenceElement = document.getElementById('confidence');
+            confidenceElement.textContent = `Confidence: ${result.confidence}`;
+            confidenceElement.classList.add(
+                result.confidence === 'high' ? 'confidence-high' :
+                result.confidence === 'medium' ? 'confidence-medium' : 'confidence-low'
+            );
+            
+            document.getElementById('accuracy').textContent = `Model Accuracy: ${result.model_accuracy}`;
+
+            // Display all parameters (optional)
+            const detailsDiv = document.getElementById('details');
+            urlParams.forEach((value, key) => {
+                if (!['prediction', 'probability', 'confidence', 'model_accuracy', 'compliment'].includes(key)) {
+                    const detailItem = document.createElement('div');
+                    detailItem.className = 'detail-item';
+                    detailItem.innerHTML = `
+                        <span class="detail-label">${key}:</span>
+                        <span class="detail-value">${value}</span>
+                    `;
+                    detailsDiv.appendChild(detailItem);
+                }
+            });
+
+            if (detailsDiv.children.length === 0) {
+                detailsDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

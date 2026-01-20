@@ -1,0 +1,83 @@
+Error loading models: [Errno 2] No such file or directory: 'models\\preprocessor.pkl'
+Failed to load models: [Errno 2] No such file or directory: 'models\\preprocessor.pkl'
+Error loading models: [Errno 2] No such file or directory: 'models\\tabnet_model.zip'
+Failed to load models: [Errno 2] No such file or directory: 'models\\tabnet_model.zip'
+Prediction error: name 'preprocessor' is not defined
+Error loading models: [Errno 2] No such file or directory: 'models\\tabnet_model.zip'
+Failed to load models: [Errno 2] No such file or directory: 'models\\tabnet_model.zip'
+Prediction error: name 'preprocessor' is not defined
+Prediction error: name 'preprocessor' is not defined
+2025-04-15 16:04:00,023 - __main__ - INFO - Models loaded successfully
+2025-04-15 16:04:00,023 - __main__ - INFO - Model accuracy: 0.9200
+2025-04-16 10:00:59,903 - __main__ - INFO - Models loaded successfully
+2025-04-16 10:00:59,903 - __main__ - INFO - Model accuracy: 0.9200
+2025-04-16 10:16:34,786 - __main__ - INFO - Models loaded successfully
+2025-04-16 10:16:34,787 - __main__ - INFO - Model accuracy: 0.9200
+2025-04-16 10:19:35,644 - __main__ - WARNING - Missing values for: Gender
+2025-04-16 10:27:18,983 - __main__ - WARNING - Missing values for: Gender
+2025-04-16 10:40:33,414 - __main__ - WARNING - Missing values for: Gender
+2025-04-16 10:52:20,924 - __main__ - WARNING - Missing values for: Gender
+2025-04-16 10:59:21,529 - __main__ - INFO - Models loaded successfully
+2025-04-16 10:59:21,529 - __main__ - INFO - Model accuracy: 0.9600
+2025-04-16 11:01:03,955 - __main__ - ERROR - Preprocessing error: columns are missing: {'eTIV', 'nWBV', 'ASF', 'EDUC', 'CDR', 'SES'}
+Traceback (most recent call last):
+  File "D:\Project-Neurocognitive - Demo\app.py", line 132, in predict
+    processed_data = preprocessor.transform(input_df)
+  File "D:\Project-Neurocognitive - Demo\venv\lib\site-packages\sklearn\utils\_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "D:\Project-Neurocognitive - Demo\venv\lib\site-packages\sklearn\compose\_column_transformer.py", line 1090, in transform
+    raise ValueError(f"columns are missing: {diff}")
+ValueError: columns are missing: {'eTIV', 'nWBV', 'ASF', 'EDUC', 'CDR', 'SES'}
+2025-04-16 11:51:13,943 - __main__ - INFO - Models loaded successfully
+2025-04-16 11:51:13,943 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-16 11:52:10,492 - __main__ - ERROR - Preprocessing error: columns are missing: {'nWBV', 'CDR', 'eTIV', 'ASF', 'EDUC', 'SES'}
+Traceback (most recent call last):
+  File "D:\Project-Neurocognitive - Demo\app.py", line 130, in predict
+    processed_data = preprocessor.transform(input_df)
+  File "D:\Project-Neurocognitive - Demo\venv\lib\site-packages\sklearn\utils\_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "D:\Project-Neurocognitive - Demo\venv\lib\site-packages\sklearn\compose\_column_transformer.py", line 1090, in transform
+    raise ValueError(f"columns are missing: {diff}")
+ValueError: columns are missing: {'nWBV', 'CDR', 'eTIV', 'ASF', 'EDUC', 'SES'}
+2025-04-17 10:04:22,801 - __main__ - INFO - Models loaded successfully
+2025-04-17 10:04:22,802 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 10:12:28,983 - __main__ - WARNING - Missing values for: Age, Gender, BMI
+2025-04-17 10:47:53,668 - __main__ - INFO - Models loaded successfully
+2025-04-17 10:47:53,668 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 10:47:57,591 - __main__ - INFO - Models loaded successfully
+2025-04-17 10:47:57,592 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 10:52:42,958 - __main__ - INFO - Prediction successful: {'prediction': 'High Risk', 'probability': '100.0%', 'confidence': 'high', 'model_accuracy': '99.5%'}
+2025-04-17 10:55:26,349 - __main__ - INFO - Prediction successful: {'prediction': 'High Risk', 'probability': '100.0%', 'confidence': 'high', 'model_accuracy': '99.5%'}
+2025-04-17 11:49:22,535 - __main__ - INFO - Models loaded successfully
+2025-04-17 11:49:22,548 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 12:15:25,418 - __main__ - INFO - Models loaded successfully
+2025-04-17 12:15:25,419 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 12:15:29,256 - __main__ - INFO - Models loaded successfully
+2025-04-17 12:15:29,256 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 12:26:59,557 - __main__ - INFO - Models loaded successfully
+2025-04-17 12:26:59,558 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 12:27:51,692 - __main__ - INFO - Models loaded successfully
+2025-04-17 12:27:51,692 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 13:41:25,270 - __main__ - INFO - Models loaded successfully
+2025-04-17 13:41:25,271 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 13:41:29,245 - __main__ - INFO - Models loaded successfully
+2025-04-17 13:41:29,246 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 14:09:40,482 - __main__ - INFO - Received form data: {'Age': '67', 'Gender': 'male', 'BMI': '20.1', 'MMSE': '25', 'MemoryComplaints': '0', 'BehavioralProblems': '1', 'FamilyHistory': '0', 'nWBV': '0.9', 'CDR': '2', 'eTIV': '1500', 'ASF': '1.0', 'EDUC': '20', 'SES': '3', 'SleepQuality': '5', 'FunctionalAssessment': '5'}
+2025-04-17 14:09:40,532 - __main__ - INFO - Prediction successful: {'prediction': 'High Risk', 'probability': '100.0%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'This assessment shows your proactive approach to health!'}
+2025-04-17 14:38:20,216 - __main__ - INFO - Received form data: {'Age': '50', 'Gender': 'male', 'Height': '180', 'Weight': '60', 'BMI': '18.5', 'MMSE': '25', 'MemoryComplaints': '1', 'BehavioralProblems': '0', 'FamilyHistory': '1', 'nWBV': '1.0', 'CDR': '2', 'eTIV': '1600', 'ASF': '1.0', 'EDUC': '15', 'SES': '3', 'SleepQuality': '5', 'FunctionalAssessment': '8'}
+2025-04-17 14:38:20,264 - __main__ - INFO - Prediction successful: {'prediction': 'High Risk', 'probability': '100.0%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'This assessment shows your proactive approach to health!'}
+2025-04-17 14:39:54,277 - __main__ - INFO - Received form data: {'Age': '50', 'Gender': 'male', 'Height': '180', 'Weight': '60', 'BMI': '18.5', 'MMSE': '28', 'MemoryComplaints': '0', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.8', 'CDR': '0', 'eTIV': '1000', 'ASF': '1.0', 'EDUC': '30', 'SES': '2', 'SleepQuality': '9', 'FunctionalAssessment': '5'}
+2025-04-17 14:39:54,319 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '41.8%', 'confidence': 'low', 'model_accuracy': '99.5%', 'compliment': 'Great news! Your cognitive health looks strong!'}
+2025-04-17 14:41:56,295 - __main__ - INFO - Received form data: {'Age': '50', 'Gender': 'male', 'Height': '180', 'Weight': '60', 'BMI': '18.5', 'MMSE': '28', 'MemoryComplaints': '0', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.8', 'CDR': '0', 'eTIV': '1000', 'ASF': '1.0', 'EDUC': '30', 'SES': '2', 'SleepQuality': '9', 'FunctionalAssessment': '5'}
+2025-04-17 14:41:56,347 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '41.8%', 'confidence': 'low', 'model_accuracy': '99.5%', 'compliment': 'Great news! Your cognitive health looks strong!'}
+2025-04-17 15:17:11,687 - __main__ - INFO - Received form data: {'Age': '45', 'Gender': 'male', 'Height': '173', 'Weight': '65', 'BMI': '21.7', 'MMSE': '25', 'MemoryComplaints': '1', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.6', 'CDR': '0', 'eTIV': '1800', 'ASF': '1.0', 'EDUC': '18', 'SES': '2', 'SleepQuality': '6', 'FunctionalAssessment': '7'}
+2025-04-17 15:17:11,723 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '8.2%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'Fantastic! Your brain health is in good shape!'}
+2025-04-17 15:18:04,894 - __main__ - INFO - Received form data: {'Age': '45', 'Gender': 'male', 'Height': '173', 'Weight': '65', 'BMI': '21.7', 'MMSE': '25', 'MemoryComplaints': '1', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.6', 'CDR': '0', 'eTIV': '1800', 'ASF': '1.0', 'EDUC': '18', 'SES': '2', 'SleepQuality': '6', 'FunctionalAssessment': '7'}
+2025-04-17 15:18:04,928 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '8.2%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'Wonderful! Your results indicate good cognitive function!'}
+2025-04-17 15:18:05,693 - __main__ - INFO - Received form data: {'Age': '45', 'Gender': 'male', 'Height': '173', 'Weight': '65', 'BMI': '21.7', 'MMSE': '25', 'MemoryComplaints': '1', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.6', 'CDR': '0', 'eTIV': '1800', 'ASF': '1.0', 'EDUC': '18', 'SES': '2', 'SleepQuality': '6', 'FunctionalAssessment': '7'}
+2025-04-17 15:18:05,727 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '8.2%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'Wonderful! Your results indicate good cognitive function!'}
+2025-04-17 15:18:05,917 - __main__ - INFO - Received form data: {'Age': '45', 'Gender': 'male', 'Height': '173', 'Weight': '65', 'BMI': '21.7', 'MMSE': '25', 'MemoryComplaints': '1', 'BehavioralProblems': '0', 'FamilyHistory': '0', 'nWBV': '0.6', 'CDR': '0', 'eTIV': '1800', 'ASF': '1.0', 'EDUC': '18', 'SES': '2', 'SleepQuality': '6', 'FunctionalAssessment': '7'}
+2025-04-17 15:18:05,950 - __main__ - INFO - Prediction successful: {'prediction': 'Low Risk', 'probability': '8.2%', 'confidence': 'high', 'model_accuracy': '99.5%', 'compliment': 'Great news! Your cognitive health looks strong!'}
+2025-04-17 15:23:19,816 - __main__ - INFO - Models loaded successfully
+2025-04-17 15:23:19,817 - __main__ - INFO - Model accuracy: 0.9950
+2025-04-17 15:23:24,271 - __main__ - INFO - Models loaded successfully
